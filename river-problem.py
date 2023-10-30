@@ -26,8 +26,15 @@ def get_next_states(state):
         next_state["person"] = not state["person"]
         if isValid(next_state) == True:
             next_states.append(next_state)
-        
-        return next_states
+
+    human_on_one_side = copy.deepcopy(state)
+    human_on_one_side["person"] = not state["person"]
+    if isValid(human_on_one_side) == True:
+        next_states.append(human_on_one_side)
+    
+
+
+    return next_states
 
 # Define a recursive function that takes in a current_state and win_state and returns the path to those states using the Depth First Search algorithm
 # This function will need to call the function get_next_states(state), as well as itself
